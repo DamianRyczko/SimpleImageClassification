@@ -2,6 +2,7 @@
 Here i implemenrted 2 models representing 2 different aproaches to the problem. 
 
 # How to Run
+* First download the [dataset](https://www.kaggle.com/datasets/gergvincze/simple-hand-drawn-and-digitized-images/data) and place it in 'data' folder or place it whenever you like but change path so it points to folder with dataset. 
 * To run the notebook, you first need to install the libraries from the requirements.txt file.
 * The notebook contains two models, representing two different approaches to the problem.
 * The models trained in the notebook have a dedicated web application built in Streamlit (in the ImageRecognitionWebiste folder).
