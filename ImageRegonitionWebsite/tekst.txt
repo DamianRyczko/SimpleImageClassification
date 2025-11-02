@@ -1,0 +1,82 @@
+ import streamlit as st
+
+from streamlit_drawable_canvas import st_canvas
+
+from PIL import Image
+
+import numpy as np
+
+import cv2 as cv
+
+
+
+
+
+st.set_page_config(layout="wide")
+
+
+left, centre, right = st.columns([1,4,1])
+
+
+if 'width' not in st.session_state:
+
+st.session_state.width = 10
+
+if 'color' not in st.session_state:
+
+st.session_state.color = "#000000"
+
+
+with st.sidebar:
+
+st.session_state.width = st.slider("Brush size:",min_value=5, max_value=50, value=10, step=1)
+
+st.session_state.color = st.color_picker("Brush color:", value="#000000")
+
+with centre:
+
+st.title("Image Recognition")
+
+tab1, tab2 = st.tabs(["Draw", "Upload Image"], width="stretch")
+
+with tab1:
+
+st.header("Draw Image")
+
+drawing = st_canvas(
+
+stroke_width=st.session_state.width,
+
+stroke_color=st.session_state.color,
+
+background_color="#FFFFFF",
+
+height=800,
+
+width=800,
+
+drawing_mode="freedraw",
+
+key="canvas",
+
+)
+
+
+model_output_box = st.empty()
+
+if st.button("Send Image"):
+
+prediction = 20
+
+model_output_box.info(f"{prediction}%",width=800)
+
+
+with tab2:
+
+st.header("Upload Image")
+
+uploaded_image = st.file_uploader("Choose an image file", type=["png", "jpg", "jpeg"])
+
+if uploaded_image is not None:
+
+st.image(uploaded_image, use_container_width=True, caption="Uploaded Image")
